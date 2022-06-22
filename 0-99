@@ -1,0 +1,9 @@
+public class Main {
+    public static void main(String[] args) {
+        int seq = 1;
+        while(seq < 100) {
+            System.out.println(seq);
+            seq++;
+        }
+    }
+}
