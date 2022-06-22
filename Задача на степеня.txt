@@ -1,0 +1,18 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner scan = new Scanner (System.in);
+        System.out.println("Введіть число:");
+        int number = scan.nextInt();
+        int seq = 1;
+        int result = 1;
+        do {
+            System.out.println(result);
+            seq++;
+            result=seq*seq;
+        } while (result < number);
+
+        }
+    }
