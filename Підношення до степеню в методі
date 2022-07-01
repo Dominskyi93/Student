@@ -1,0 +1,18 @@
+public class Main {
+    int pow(int number, int powValue) {
+        int result = 1;
+        int а = 1;
+        for (int a = 1; а <= powValue; а++) {
+            result = result * number;
+        }
+        return result;
+    }
+}
+
+class top {
+    public static void main(String[] args) {
+        Main t = new Main();
+        int res = t.pow(4, 4);
+        System.out.println(res);
+    }
+}
