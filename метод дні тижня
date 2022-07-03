@@ -1,0 +1,44 @@
+public class Main {
+
+    public static String integerToDay(int day) {
+        String result = null;
+        if (day == 1)
+            result = "Понедельник";
+        else if (day == 2)
+            result = "Вторник";
+        else if (day == 3)
+            result = "Среда";
+        else if (day == 4)
+            result = "Четверг";
+        else if (day == 5)
+            result = "Пятница";
+        else if (day == 6)
+            result = "Субота";
+        else if (day == 7)
+            result = "Воскресенье";
+        else
+            result = "Такого дня нет! :(";
+        return result;
+    }
+    
+    public static void main(String[] args) {
+        String result;
+        String message = " - это день недели под цифрой ";
+
+        int day = 2;
+        result = integerToDay(day);
+        System.out.println(result + message + day);
+
+        day = 5;
+        result = integerToDay(day);
+        System.out.println(result + message + day);
+
+        day = 7;
+        result = integerToDay(day);
+        System.out.println(result + message + day);
+
+        day = 10;
+        result = integerToDay(day);
+        System.out.println(result + message + day);
+    }
+}
