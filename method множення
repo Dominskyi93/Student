@@ -1,0 +1,14 @@
+public class Main {
+    public static long multiply(int n, int m) {
+        long result = n * m;
+        return result;
+    }
+}
+
+class Tro {
+    public static void main(String[] args) {
+        Main t = new Main();
+        long res = t.multiply(7, 9);
+        System.out.println(res);
+    }
+}
