@@ -6,12 +6,13 @@ public class Main {
 
     public static int getMaxInteger(int a, int b, int c) {
         int result = 0;
-        if ((a > b) && (a > c))
+        if ((a > b) && (a > c)) {
             result = a;
-        else if ((b > a) && (b > c))
+        } else if ((b > a) && (b > c)) {
             result = b;
-        else
+        } else {
             result = c;
+        }
         return result;
     }
 }
