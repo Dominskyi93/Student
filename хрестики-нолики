@@ -1,0 +1,94 @@
+import java.util.Random;
+import java.util.Scanner;
+
+class XO {
+    final char player = 'x', computer = 'o', empty = '*';
+    char[][] field = new char[3][3];
+    Random random = new Random();
+    Scanner scan = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        new XO().game();
+    }
+
+    void game() {
+        initField();
+        while (true) {
+            playerTurn();
+            if (checkWin(player)) {
+                System.out.println("Ви перемогли!!!");
+                break;
+            }
+            if (isFieldFull()) {
+                System.out.println("Перемогла дружба. НІЧИЯ!!!");
+                break;
+            }
+            computerTurn();
+            printField();
+            if (checkWin(computer)) {
+                System.out.println("Я переміг!!!");
+                break;
+            }
+        }
+        System.out.println("Гра закінчена!!!");
+        printField();
+    }
+
+    void initField() {
+        for (int row = 0; row < 3; row++) {
+            for (int col = 0; col < 3; col++)
+                field[row][col] = empty;
+        }
+    }
+
+    void printField() {
+        for (int row = 0; row < 3; row++) {
+            for (int col = 0; col < 3; col++) {
+                System.out.print(field[row][col] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    void playerTurn() {
+        int x, y;
+        do {
+            System.out.println("Виберіть ячейку координат Y та X відповідно(від 1 до 3)");
+            x = scan.nextInt() - 1;
+            y = scan.nextInt() - 1;
+        } while (!isCellValid(x, y));
+        field[y][x] = player;
+    }
+
+    boolean isCellValid(int x, int y) {
+        if (x < 0 || y < 0 || x > 2 || y > 2)
+            return false;
+        return field[x][y] == empty;
+    }
+
+    void computerTurn() {
+        int x, y;
+        do {
+            x = random.nextInt(3);
+            y = random.nextInt(3);
+        } while (!isCellValid(x, y));
+        field[x][y] = computer;
+    }
+
+    boolean checkWin(char dot) {
+        for (int i = 0; i < 3; i++)
+            if ((field[i][0] == dot && field[i][1] == dot && field[i][2] == dot || field[0][i] == dot && field[1][i] == dot && field[2][i] == dot))
+                return true;
+        if ((field[0][0] == dot && field[1][1] == dot && field[2][2] == dot || field[2][0] == dot && field[1][1] == dot && field[0][2] == dot))
+            return true;
+        return false;
+    }
+
+    boolean isFieldFull() {
+        for (int row = 0; row < 3; row++)
+            for (int col = 0; col < 3; col++)
+                if (field[row][col] == empty)
+                    return false;
+        return true;
+    }
+}
