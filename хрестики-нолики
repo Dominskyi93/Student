@@ -1,10 +1,8 @@
-import java.util.Random;
 import java.util.Scanner;
 
 class XO {
     final char player = 'x', computer = 'o', empty = '*';
     char[][] field = new char[3][3];
-    Random random = new Random();
     Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -13,6 +11,7 @@ class XO {
 
     void game() {
         initField();
+        printField();
         while (true) {
             playerTurn();
             if (checkWin(player)) {
@@ -53,11 +52,13 @@ class XO {
     void playerTurn() {
         int x, y;
         do {
-            System.out.println("Виберіть ячейку координат Y та X відповідно(від 1 до 3)");
+            System.out.println("Введіть номер стовпчика та рядка відповідно(від 1 до 3)");
             x = scan.nextInt() - 1;
             y = scan.nextInt() - 1;
+
         } while (!isCellValid(x, y));
         field[y][x] = player;
+
     }
 
     boolean isCellValid(int x, int y) {
@@ -69,8 +70,8 @@ class XO {
     void computerTurn() {
         int x, y;
         do {
-            x = random.nextInt(3);
-            y = random.nextInt(3);
+            x = (int) (Math.random() * 3);
+            y = (int) (Math.random() * 3);
         } while (!isCellValid(x, y));
         field[x][y] = computer;
     }
