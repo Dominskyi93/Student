@@ -3,7 +3,6 @@ import java.util.Scanner;
 class XO {
     final char player = 'x', computer = 'o', empty = '*';
     char[][] field = new char[3][3];
-    Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
         new XO().game();
@@ -51,19 +50,22 @@ class XO {
 
     void playerTurn() {
         int x, y;
-        do {
-            System.out.println("Введіть номер стовпчика та рядка відповідно(від 1 до 3)");
-            x = scan.nextInt() - 1;
-            y = scan.nextInt() - 1;
+        try {
+            Scanner scan = new Scanner(System.in);
+            do {
+                System.out.println("Введіть номер стовпчика та рядка відповідно(від 1 до 3)");
+                x = scan.nextInt() - 1;
+                y = scan.nextInt() - 1;
 
-        } while (!isCellValid(x, y));
-        field[y][x] = player;
-
+            } while (!isCellValid(x, y));
+            field[y][x] = player;
+        } catch (Exception e) {
+            System.out.println("Ви ввели не вірний символ");
+        }
     }
 
     boolean isCellValid(int x, int y) {
-        if (x < 0 || y < 0 || x > 2 || y > 2)
-            return false;
+        boolean b1 = (x < 0 || y < 0 || x > 2 || y > 2) ? false : true;
         return field[x][y] == empty;
     }
 
