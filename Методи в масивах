@@ -1,0 +1,118 @@
+public class ArrayDynamic {
+    int[] arr = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
+
+    int add(int numb) {
+        int result = 0;
+        int[] newArr = new int[arr.length + 1];
+        for (int i = 0; i < arr.length; i++) {
+            newArr[i] = arr[i];
+        }
+        newArr[newArr.length - 1] = numb;
+        for (int i : newArr) {
+            System.out.println(i);
+        }
+        return result;
+    }
+
+    int addAll(int numb1, int numb2, int numb3) {
+        int result = 0;
+        int[] newArr = new int[arr.length + 3];
+        for (int i = 0; i < arr.length; i++) {
+            newArr[i] = arr[i];
+        }
+        newArr[newArr.length - 3] = numb1;
+        newArr[newArr.length - 2] = numb2;
+        newArr[newArr.length - 1] = numb3;
+        for (int i : newArr) {
+            System.out.println(i);
+        }
+        return result;
+    }
+
+    int dellCell(int index) {
+        int result = 0;
+        for (int i = index; i < arr.length - 1; i++) {
+            arr[i] = arr[i + 1];
+        }
+        arr[arr.length - 1] = 0;
+        for (int i : arr) {
+            System.out.println(i);
+        }
+        return result;
+    }
+
+    int getMin() {
+        int minValue = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] < minValue) {
+                minValue = arr[i];
+            }
+            System.out.println(minValue);
+        }
+        return minValue;
+    }
+
+    int getMax() {
+        int maxValue = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > maxValue) {
+                maxValue = arr[i];
+            }
+        }
+        System.out.println(maxValue);
+        return maxValue;
+    }
+
+    int autoSum() {
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
+        }
+        System.out.println(sum);
+        return sum;
+    }
+
+    int getCell(int index) {
+        int number = 0;
+        for (int i = 0; i < arr.length; i++) {
+            number = arr[index];
+        }
+        System.out.println(number);
+        return number;
+    }
+
+    int getArrayDynamic() {
+        int result = 0;
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]);
+        }
+        return result;
+    }
+
+    void sizeArrayDynamic() {
+        System.out.println(arr.length);
+    }
+
+    int cleanArrayDynamic() {
+        int result = 0;
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = 0;
+            System.out.println(arr[i]);
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        ArrayDynamic t = new ArrayDynamic();
+        t.add(50);
+        t.addAll(12, 15, 33);
+        t.dellCell(3);
+        t.getMin();
+        t.getMax();
+        t.autoSum();
+        t.getCell(3);
+        t.sizeArrayDynamic();
+        t.getArrayDynamic();
+        t.cleanArrayDynamic();
+    }
+}
